@@ -68,7 +68,7 @@ function makeData(obj) {
         user = { name: u.name, email: u.email, avatar: u.avatar };
       }
     }
-    c = [];
+    var c = [];
     for (com of obj.comments) {
       if (com.postId == p.id) {
         c.push({ username: com.name, content: com.body });
@@ -86,7 +86,6 @@ function makeData(obj) {
 }
 
 function makePost(listView) {
-  console.log(listView)
   for (card of listView) {
     $("#card-group").append(`
       <div class="card border-secondary m-3" style="min-width: 18rem;">
@@ -104,7 +103,8 @@ function makePost(listView) {
         </p>
         <div class="" id="collapseExample${card.id}">
           <div class="card card-body">
-          ${card.comment[0]}
+          <h6>${card.comment[0].username}</h6>
+          <p>${card.comment[0].content}</p>
           </div>
         </div>
       </div>
